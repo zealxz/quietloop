@@ -32,6 +32,8 @@ weixin/
 *token*
 *secret*
 *credential*
+# The repository's offline scanner is code, not a secret.
+!scripts/secret_scan.py
 auth.json
 config.local.*
 
