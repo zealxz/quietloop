@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quietloop"
+version = "0.1.0"
+description = "Privacy-first, evidence-driven reflective automation for personal agents"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE", "AUTHORS.md"]
+authors = [
+  { name = "zealx × NOVA" },
+]
+keywords = ["agent", "automation", "reflection", "privacy", "hermes", "reliability"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["build>=1.2", "pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+quietloop = "quietloop.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/zealxz/quietloop"
+Documentation = "https://github.com/zealxz/quietloop#readme"
+Issues = "https://github.com/zealxz/quietloop/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S"]
+ignore = ["S603"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "E501"]

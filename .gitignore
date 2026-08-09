@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+
+# Local runtime state — deny by default
+.hermes/
+.quietloop/
+state/
+receipts/
+backups/
+cron/
+evolution/
+weixin/
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*state*.json
+*pending*.json
+*.log
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+*token*
+*secret*
+*credential*
+auth.json
+config.local.*
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
