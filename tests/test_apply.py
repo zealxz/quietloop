@@ -1,3 +1,4 @@
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -57,3 +58,26 @@ def test_apply_refuses_escape_stale_content_and_code(tmp_path: Path) -> None:
     code = _proposal("docs/note.py", "current", "after")
     with pytest.raises(ApplyRefused, match="policy"):
         apply_proposal(code, approval, root=root, state_dir=tmp_path / "state")
+
+
+@pytest.mark.parametrize(
+    "proposal_id",
+    ["../escape", "../../escape", "nested/id", "nested\\id", "", ".", "..", "nul\0id", "absolute"],
+)
+def test_apply_refuses_unsafe_proposal_ids_before_writing(tmp_path: Path, proposal_id: str) -> None:
+    root = tmp_path / "project"
+    target = root / "docs" / "note.md"
+    target.parent.mkdir(parents=True)
+    target.write_text("before", encoding="utf-8")
+    if proposal_id == "absolute":
+        proposal_id = str(tmp_path / "outside" / "proposal")
+    proposal = replace(_proposal("docs/note.md", "before", "after"), id=proposal_id)
+    approval = Approval.for_proposal(proposal.id, "synthetic-reviewer")
+    state_dir = tmp_path / "state"
+
+    with pytest.raises(ApplyRefused, match="proposal ID"):
+        apply_proposal(proposal, approval, root=root, state_dir=state_dir)
+
+    assert target.read_text(encoding="utf-8") == "before"
+    assert not state_dir.exists()
+    assert not (tmp_path / "outside").exists()

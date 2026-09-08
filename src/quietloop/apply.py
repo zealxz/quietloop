@@ -64,6 +64,12 @@ def apply_proposal(
 
     if approval is None or approval.proposal_id != proposal.id or not approval.approved_by.strip():
         raise ApplyRefused("explicit approval for this proposal is required")
+    if (
+        not proposal.id
+        or proposal.id in {".", ".."}
+        or any(character in proposal.id for character in ("/", "\\", "\0"))
+    ):
+        raise ApplyRefused("proposal ID must be a single non-empty filename component")
     active_policy = policy or ApplyPolicy()
     if not active_policy.allows(proposal.target, proposal.replacement):
         raise ApplyRefused("proposal violates the configured apply policy")
