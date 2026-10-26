@@ -195,6 +195,7 @@ No roadmap item will add telemetry, automatic chat-store discovery, or unrestric
    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=zealxz/quietloop&type=date&legend=top-left" />
  </picture>
 </a>
+
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and [the code of conduct](CODE_OF_CONDUCT.md). Small tests that disprove a safety claim are especially welcome.
