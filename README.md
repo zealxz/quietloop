@@ -186,6 +186,15 @@ The test suite uses only temporary directories and synthetic data. CI runs Pytho
 
 No roadmap item will add telemetry, automatic chat-store discovery, or unrestricted code mutation.
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=zealxz%2Fquietloop&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=zealxz/quietloop&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=zealxz/quietloop&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=zealxz/quietloop&type=date&legend=top-left" />
+ </picture>
+</a>
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and [the code of conduct](CODE_OF_CONDUCT.md). Small tests that disprove a safety claim are especially welcome.
